@@ -1,4 +1,36 @@
 // Função para calcular a quantificação de material para estrutura de fibra óptica
+// Function to check if all required fields are filled
+function isFormValid() {
+  var numPavimentos = document.getElementById("numPavimentos").value;
+  var numParesFibras = document.getElementById("numParesFibras").value;
+  var medidaBasica = document.getElementById("medidaBasica").value;
+  var numBackbonesAndar = document.getElementById("numBackbonesAndar").value;
+
+  return numPavimentos !== "" &&
+    numParesFibras !== "" &&
+    medidaBasica !== "" &&
+    numBackbonesAndar !== "";
+}
+
+// Function to enable/disable the button based on the form validation
+function updateButtonState() {
+  var button = document.getElementById("botao");
+  button.disabled = !isFormValid();
+}
+
+// Event listeners for input fields to update button state
+document.getElementById("numPavimentos").addEventListener("input", updateButtonState);
+document.getElementById("numParesFibras").addEventListener("input", updateButtonState);
+document.getElementById("medidaBasica").addEventListener("input", updateButtonState);
+document.getElementById("numBackbonesAndar").addEventListener("input", updateButtonState);
+
+// Call the function initially to disable the button if the form is not valid
+updateButtonState();
+
+// Rest of your existing code...
+
+
+
 function calcularQuantidadeMaterial() {
   localStorage.setItem("qntTerminador", "0");
   localStorage.setItem("fibrasTerminador", "0");
@@ -8,7 +40,15 @@ function calcularQuantidadeMaterial() {
   localStorage.setItem("pigtail", "0");
   localStorage.setItem("cordaoSM", "0");
   localStorage.setItem("emendas", "0");
-  localStorage.setItem(metragemCabo, 0);
+  localStorage.setItem("metragemCabo", "0");
+  localStorage.setItem("numPavimentos", "0");
+  localStorage.setItem("numParesFibras", "0");
+  localStorage.setItem("medidaBasica", "0");
+  localStorage.setItem("tipoCabo", "0");
+  localStorage.setItem("caracteristicaFibra", "0");
+  localStorage.setItem("backboneTipo", "0");
+
+  
   // Obter valores do formulário
   var numPavimentos = parseInt(document.getElementById("numPavimentos").value);
   var numParesFibras = parseInt(
@@ -22,12 +62,15 @@ function calcularQuantidadeMaterial() {
   var numBackbonesAndar = parseInt(
     document.getElementById("numBackbonesAndar").value
   );
-  var possuiBackbonePrimario = document.getElementById(
-    "possuiBackbonePrimario"
-  ).checked;
-  var possuiBackboneSecundario = document.getElementById(
-    "possuiBackboneSecundario"
-  ).checked;
+  var tipooo = document.getElementById("tipoBackbone").value;
+
+
+  localStorage.setItem("numPavimentos", numPavimentos);
+  localStorage.setItem("numParesFibras", numParesFibras);
+  localStorage.setItem("medidaBasica", medidaBasica);
+  localStorage.setItem("tipoCabo", tipoCabo);
+  localStorage.setItem("caracteristicaFibra", caracteristicaFibra);
+  localStorage.setItem("backboneTipo", tipooo);
 
   // Cálculos para quantificação de material
   var numFibrasAndar = numBackbonesAndar * 2; // Cada backbone por andar requer 2 pares de fibras
@@ -69,7 +112,7 @@ function calcularQuantidadeMaterial() {
   localStorage.setItem("emendas", numBandejasEmenda);
   localStorage.setItem("cabo", metragemCabo);
 
-  window.location.href = '/resutado.html';
+  window.location.href = 'fibrateste.html';
 }
 
 // Função auxiliar para calcular a metragem total do cabo de fibra óptica
@@ -79,4 +122,24 @@ function calcularMetragemCabo(numPavimentos, medidaBasica) {
     metragemTotal += medidaBasica * 2 * i; // Cada pavimento corresponde a duas vezes a medida básica
   }
   return metragemTotal;
+}
+
+function gerarPDF() {
+  var doc = new jsPDF();
+
+  var url = 'fibrateste.html';
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      var conteudo = xhr.responseText;
+
+      doc.fromHTML(conteudo, 15, 15, { 'width': 180 });
+
+
+      doc.save('GMS - SOLUÇÕES DE REDE.pdf');
+    }
+  };
+  xhr.open('GET', url, true);
+  xhr.send();
 }
