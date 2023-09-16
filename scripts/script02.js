@@ -161,7 +161,7 @@ function processarDadosFormularioPrimario() {
 function calcularMetragemCabo(numPavimentos, medidaBasica) {
   var metragemTotal = 0;
   for (var i = 1; i <= numPavimentos; i++) {
-    metragemTotal += medidaBasica * 2 * i; // Cada pavimento corresponde a duas vezes a medida básica
+    metragemTotal += medidaBasica * 2 * i * 1.2; // Cada pavimento corresponde a duas vezes a medida básica
   }
   return metragemTotal;
 }
@@ -182,7 +182,7 @@ function processarResultados(dados) {
     var numBandejaEmenda = Math.ceil((numFibrasAndar * numPavimentos) / 12);
     var numFibrasTotal = numFibrasAndar * numPavimentos;
     var numTerminadoresOpticos = numPavimentos;
-    var numPigtais = numConectores;
+    var numPigtais = numFibrasTotal;
     var numCordoes = numFibrasAndar;
     var numMetragemCabo = calcularMetragemCabo(
       numPavimentos,
