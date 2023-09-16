@@ -1,51 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CALCULADORA DE BACKBONE</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
-
-<header>
-  <p>GMS SOLUÇÕES DE REDE</p>
-</header>
-
-<body>
-  <h1>Calculadora de Estrutura de Fibra Óptica</h1>
-  <form id="fibraForm">
-    <label>Número de pavimentos:</label>
-    <input type="number" id="numPavimentos" min="0" required><br>
-
-    <label>Número de pares de fibras disponíveis:</label>
-    <input type="number" id="numParesFibras" min="0" required><br>
-
-    <label>Medida básica para cálculo dos lances de cabo do backbone (em metros):</label>
-    <input type="number" id="medidaBasica" min="0" required><br>
-
-    <label>Especificação do cabo de fibra óptica:</label>
-    <select id="tipoCabo" required>
-      <option value="monomodo">Cabo de Fibra Óptica Monomodo</option>
-      <option value="multimodo">Cabo de Fibra Óptica Multimodo</option>
-    </select><br>
-
-    <label>Característica da fibra óptica:</label>
-    <input type="text" id="caracteristicaFibra" value="Tight Buffer" disabled><br>
-
-    <label>Quantidade de fibras por andar:</label>
-    <input type="number" id="numBackbonesAndar" min="0" required><br>
-
-
-    <label>Tipo de backbone:</label>
-    <select id="tipoBackbone" required>
-      <option value="Primário">Primário</option>
-      <option value="Secundário">Secundário</option>
-    </select><br>
-    <button id="botao" type="button" onclick="calcularQuantidadeMaterial()">Calcular</button>
-  </form>
-  <script src="script.js"></script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quantificação de Fibra Óptica</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="textos">
+      <h1>Olá! Bem vind@!</h1>
+      <h2>Primeiramente, nos diga quantos backbones existem em seu projeto.</h2>
+    </div>
+    <div class="form" id="forms">
+      <form action="#">
+        <input
+          type="number"
+          name="numBackbones"
+          id="numbackBones"
+          placeholder="Nº de backbones"
+          required
+          minlength="1"
+          maxlength="10"
+        />
+        <input type="submit" value="Enviar!" id="enviar" onclick="calculaDivsBackbones()" />
+      </form>
+    </div>
+    <script src="./scripts/script01.js"></script>
+  </body>
 </html>

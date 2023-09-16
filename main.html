@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    
+    <div class="titulos">
+      <h1>Preencha as Caixas de Formulário</h1>
+    </div>
+    <div class="container" id="container">
+      <div class="box">
+        <h3>Backbone primário</h3>
+        <form id="fibraForm">
+          <label>Especificação do cabo de fibra óptica:</label>
+          <select id="PtipoCabo" required>
+            <option value="monomodo">Cabo de Fibra Óptica Monomodo</option>
+            <option value="multimodo">
+              Cabo de Fibra Óptica Multimodo
+            </option></select
+          ><br />
+            <div class="spec1">
+          <label>Especificação do núcleo de fibra óptica MM:</label>
+          <select id="PespecsFibraMM" required>
+            <option
+              value="50/125 micrômetros (OM2) | 3/1 dB/km | 500/500 MHz-km"
+            >
+              50/125 micrômetros (OM2) | 3/1 dB/km | 500/500 MHz-km
+            </option>
+            <option
+              value="50/125 micrômetros (OM3) | 3/1 dB/km | 2000/500 MHz-km"
+            >
+              50/125 micrômetros (OM3) | 3/1 dB/km | 2000/500 MHz-km
+            </option>
+            <option
+              value="50/125 micrômetros (OM4) | 3/1 dB/km | 4700/500 MHz-km"
+            >
+              50/125 micrômetros (OM4) | 3/1 dB/km | 4700/500 MHz-km
+            </option>
+            <option
+              value="62,5/125 micrômetros (OM1) | 3/1 dB/km | 160-200/500 MHz-km"
+            >
+              62,5/125 micrômetros (OM1) | 3/1 dB/km | 160-200/500 MHz-km
+            </option>
+            <option value="100/140 micrômetros | 3/1 dB/km | 150/300 MHz-km">
+              100/140 micrômetros | 3/1 dB/km | 150/300 MHz-km
+            </option>
+            <br />
+          </select>
+        </div>
+        <div class="spec2">
+          <label>Especificação do núcleo de fibra óptica SM:</label>
+          <select id="PespecsFibraSM" required>
+            <option
+              value="9/125 micrômetros (OS1, B1.1 ou G.652) | 0,4/0,25 dB/km | ~100 Terahertz"
+            >
+              9/125 micrômetros (OS1, B1.1 ou G.652) | 0,4/0,25 dB/km | ~100
+              Terahertz
+            </option>
+            <option
+              value="9/125 micrômetros (OS2, B1.3 ou G.652) | 0,4/0,25 dB/km | ~100 Terahertz"
+            >
+              9/125 micrômetros (OS2, B1.3 ou G.652) | 0,4/0,25 dB/km | ~100
+              Terahertz
+            </option>
+            <option
+              value="9/125 micrômetros (B2 ou G.653) | 0,4/0,25 dB/km | ~100 Terahertz"
+            >
+              9/125 micrômetros (B2 ou G.653) | 0,4/0,25 dB/km | ~100 Terahertz
+            </option>
+            <option
+              value="9/125 micrômetros (B1.2 ou G.654) | 0,4/0,25 dB/km | ~100 Terahertz"
+            >
+              9/125 micrômetros (B1.2 ou G.654) | 0,4/0,25 dB/km | ~100
+              Terahertz
+            </option>
+            <option
+              value="9/125 micrômetros (B4 ou G.654) | 0,4/0,25 dB/km | ~100 Terahertz"
+            >
+              9/125 micrômetros (B4 ou G.654) | 0,4/0,25 dB/km | ~100 Terahertz
+            </option>
+            <br />
+          </select>
+        </div>
+          <label>Característica do cabo de fibra óptica:</label>
+          <select id="PcaracsFibra" required>
+            <option value="Tight Buffer">Tight Buffer</option>
+            <option value="Loose">Loose Tube</option></select
+          ><br />
+
+          <label>Quantidade de fibras recebidas:</label>
+          <input type="number" id="PnumfibraRecebidas" min="0" required /><br />
+          <label>Tipo de backbone:</label>
+          <select id="PtipoBackbone" required disabled>
+            <option value="Primário">Primário</option selected>
+            <option value="Secundário">Secundário</option></select
+          ><br />
+        </form>
+      </div>
+    </div>
+    <button id="btnEnviar">Enviar!</button>
+    <script src="./scripts/script02.js"></script>
+  </body>
+</html>
