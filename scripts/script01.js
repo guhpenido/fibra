@@ -6,5 +6,5 @@ function calculaDivsBackbones(){
   console.log("aa");
     let numBackbones = document.getElementById("numbackBones").value;
     localStorage.setItem("numBackbones", numBackbones);
-    window.location.href = "../main.html";
+    window.location.href = "main.html";
 }

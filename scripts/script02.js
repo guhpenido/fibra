@@ -292,7 +292,7 @@ function processaDados() {
       }
     }
     console.log(tamanhoDoObjeto);
-    window.location.href = "../resultado.html";
+    window.location.href = "resultado.html";
   } else {
     alert("Por favor, preencha todos os campos antes de enviar o formulário.");
   }
